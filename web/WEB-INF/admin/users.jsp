@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="com.foundlost.bean.*,com.foundlost.util.*,java.util.*" %>
 <% request.setCharacterEncoding("UTF-8");
+    String ctxPath = request.getContextPath();
     User adminUser = (User) session.getAttribute("user");
     if (adminUser == null || adminUser.getRole() != 1) { response.sendRedirect("../login.jsp"); return; }
     PageBean<User> pageBean = (PageBean<User>) request.getAttribute("pageBean");
@@ -11,24 +12,24 @@
 <head>
     <meta charset="UTF-8"><title>用户管理 · 后台</title>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="<%=ctxPath%>/css/style.css">
 </head>
 <body>
 <nav class="navbar">
-    <a href="../index.jsp" class="navbar-brand"><div class="logo-icon">🎓</div>校园失物招领</a>
+    <a href="<%=ctxPath%>/index.jsp" class="navbar-brand"><div class="logo-icon">🎓</div>校园失物招领</a>
     <div class="navbar-nav">
-        <a href="../index.jsp"><i class="fa-solid fa-house"></i> 前台</a>
+        <a href="<%=ctxPath%>/index.jsp"><i class="fa-solid fa-house"></i> 前台</a>
         <span class="user-name"><%= adminUser.getRealName() != null ? adminUser.getRealName() : adminUser.getUsername() %></span>
-        <a href="../logout"><i class="fa-solid fa-right-from-bracket"></i> 退出</a>
+        <a href="<%=ctxPath%>/logout"><i class="fa-solid fa-right-from-bracket"></i> 退出</a>
     </div>
 </nav>
 <div class="admin-wrapper">
     <div class="admin-sidebar">
-        <a href="index"><i class="fa-solid fa-gauge-high"></i> 控制台</a>
-        <a href="users" class="active"><i class="fa-solid fa-users"></i> 用户管理</a>
-        <a href="items"><i class="fa-solid fa-clipboard-check"></i> 信息审核</a>
-        <a href="categories"><i class="fa-solid fa-folder-tree"></i> 分类管理</a>
-        <a href="notices"><i class="fa-solid fa-bullhorn"></i> 公告管理</a>
+        <a href="<%=ctxPath%>/admin/index"><i class="fa-solid fa-gauge-high"></i> 控制台</a>
+        <a href="<%=ctxPath%>/admin/users" class="active"><i class="fa-solid fa-users"></i> 用户管理</a>
+        <a href="<%=ctxPath%>/admin/items"><i class="fa-solid fa-clipboard-check"></i> 信息审核</a>
+        <a href="<%=ctxPath%>/admin/categories"><i class="fa-solid fa-folder-tree"></i> 分类管理</a>
+        <a href="<%=ctxPath%>/admin/notices"><i class="fa-solid fa-bullhorn"></i> 公告管理</a>
     </div>
     <div class="admin-main">
         <h2 style="font-size:20px;font-weight:800;margin-bottom:18px;letter-spacing:-0.02em;">
