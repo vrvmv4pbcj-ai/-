@@ -1,4 +1,4 @@
-﻿package com.foundlost.servlet;
+package com.foundlost.servlet;
 
 import com.foundlost.bean.User;
 import com.foundlost.service.UserService;
