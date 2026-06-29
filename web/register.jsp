@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -22,7 +22,11 @@
             </div>
             <div class="form-group">
                 <label><i class="fa-solid fa-lock"></i>&nbsp; 密码 *</label>
-                <input type="password" name="password" required placeholder="至少6位">
+                <input type="password" name="password" id="password" required placeholder="至少6位">
+            </div>
+            <div class="form-group">
+                <label><i class="fa-solid fa-lock"></i>&nbsp; 确认密码 *</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" required placeholder="请再次输入密码">
             </div>
             <div class="form-group">
                 <label><i class="fa-solid fa-id-card"></i>&nbsp; 真实姓名</label>
@@ -44,6 +48,16 @@
 <script>
 document.getElementById("registerForm").addEventListener("submit",function(e){
     e.preventDefault();
+    var pwd = document.getElementById("password").value;
+    var confirmPwd = document.getElementById("confirmPassword").value;
+    if (pwd !== confirmPwd) {
+        alert("两次输入的密码不一致，请重新输入");
+        return;
+    }
+    if (pwd.length < 6) {
+        alert("密码长度至少6位");
+        return;
+    }
     var d=new FormData(this);
     fetch("register",{method:"POST",body:new URLSearchParams(d)})
     .then(function(r){return r.json()})
