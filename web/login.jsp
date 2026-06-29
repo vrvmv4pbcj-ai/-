@@ -31,9 +31,7 @@
         <p class="auth-footer">
             还没有账号？<a href="register.jsp">立即注册 <i class="fa-solid fa-arrow-right"></i></a>
         </p>
-        <p class="auth-test">
-            <i class="fa-solid fa-circle-info"></i>&nbsp; 测试：admin / admin123 &nbsp;|&nbsp; test / test123
-        </p>
+        
     </div>
 </div>
 <script>

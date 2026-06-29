@@ -194,14 +194,9 @@
 
 <!-- 页脚 -->
 <footer class="footer">
-    <div class="footer-inner">
+    <div class="footer-inner" style="justify-content:center;">
         <div class="footer-copy">
-            <i class="fa-regular fa-copyright"></i>&nbsp; 2026 校园失物招领系统
-        </div>
-        <div class="footer-links">
-            <a href="#"><i class="fa-solid fa-phone"></i>&nbsp; 联系方式</a>
-            <a href="#"><i class="fa-solid fa-circle-question"></i>&nbsp; 帮助中心</a>
-            <a href="#"><i class="fa-solid fa-shield-halved"></i>&nbsp; 隐私政策</a>
+            &copy;2026 校园失物招领系统
         </div>
     </div>
 </footer>
