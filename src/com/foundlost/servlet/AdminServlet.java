@@ -16,7 +16,6 @@ public class AdminServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String path = req.getPathInfo();
         if (path == null) path = "/";
-
         // 处理带 action 的 GET 请求（审核、删除等）
         String action = req.getParameter("action");
         if (action != null) {
@@ -25,30 +24,23 @@ public class AdminServlet extends HttpServlet {
         }
 
         switch (path) {
-            case "/users": {
-                int page = req.getParameter("page") != null ? Integer.parseInt(req.getParameter("page")) : 1;
-                req.setAttribute("pageBean", new UserService().findByPage(page, 10));
-                req.getRequestDispatcher("/admin/users.jsp").forward(req, resp);
+            case "/":
+                req.getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(req, resp);
                 break;
-            }
-            case "/items": {
-                int page = req.getParameter("page") != null ? Integer.parseInt(req.getParameter("page")) : 1;
-                req.setAttribute("pageBean", new ItemService().findAuditPage(page, 10));
-                req.getRequestDispatcher("/admin/items.jsp").forward(req, resp);
+            case "/users":
+                loadUsers(req, resp);
                 break;
-            }
-            case "/categories": {
-                req.setAttribute("catList", new CategoryService().findByPage(1, 100));
-                req.getRequestDispatcher("/admin/categories.jsp").forward(req, resp);
+            case "/items":
+                loadItems(req, resp);
                 break;
-            }
-            case "/notices": {
-                req.setAttribute("noticeList", new NoticeService().findByPage(1, 50));
-                req.getRequestDispatcher("/admin/notices.jsp").forward(req, resp);
+            case "/categories":
+                loadCategories(req, resp);
                 break;
-            }
+            case "/notices":
+                loadNotices(req, resp);
+                break;
             default:
-                req.getRequestDispatcher("/admin/index.jsp").forward(req, resp);
+                req.getRequestDispatcher("/WEB-INF/admin/index.jsp").forward(req, resp);
         }
     }
 
@@ -57,6 +49,38 @@ public class AdminServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         handleAction(req, resp, action);
+    }
+
+    private void loadUsers(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        int page = req.getParameter("page") != null ? Integer.parseInt(req.getParameter("page")) : 1;
+        req.setAttribute("pageBean", new UserService().findByPage(page, 10));
+        req.getRequestDispatcher("/WEB-INF/admin/users.jsp").forward(req, resp);
+    }
+
+    private void loadItems(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        int page = req.getParameter("page") != null ? Integer.parseInt(req.getParameter("page")) : 1;
+        req.setAttribute("pageBean", new ItemService().findAuditPage(page, 10));
+        req.getRequestDispatcher("/WEB-INF/admin/items.jsp").forward(req, resp);
+    }
+
+    private void loadCategories(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        req.setAttribute("catList", new CategoryService().findByPage(1, 100));
+        req.getRequestDispatcher("/WEB-INF/admin/categories.jsp").forward(req, resp);
+    }
+
+    private void loadNotices(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        req.setAttribute("noticeList", new NoticeService().findByPage(1, 50));
+        req.getRequestDispatcher("/WEB-INF/admin/notices.jsp").forward(req, resp);
+    }
+
+    private void chain(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        // 放行给默认 Servlet 处理
+        getServletContext().getNamedDispatcher("default").forward(req, resp);
     }
 
     private void handleAction(HttpServletRequest req, HttpServletResponse resp, String action)
@@ -83,14 +107,7 @@ public class AdminServlet extends HttpServlet {
             case "delete": {
                 int id = Integer.parseInt(req.getParameter("id"));
                 new ItemService().softDelete(id);
-                // 根据来源跳回对应页面
-                String from = req.getParameter("from");
-                if ("users".equals(from)) {
-                    new UserService().updateStatus(id, 0);
-                    resp.sendRedirect("users");
-                } else {
-                    resp.sendRedirect("items");
-                }
+                resp.sendRedirect("items");
                 break;
             }
             case "userStatus": {
@@ -100,17 +117,9 @@ public class AdminServlet extends HttpServlet {
                 resp.sendRedirect("users");
                 break;
             }
-            case "audit": {
-                int id = Integer.parseInt(req.getParameter("id"));
-                int status = Integer.parseInt(req.getParameter("status"));
-                new ItemService().audit(id, status);
-                resp.sendRedirect("items");
-                break;
-            }
             case "addCategory": {
                 Category c = new Category();
                 c.setName(req.getParameter("name"));
-                c.setSortOrder(0);
                 new CategoryService().add(c);
                 resp.sendRedirect("categories");
                 break;

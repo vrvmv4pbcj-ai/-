@@ -24,11 +24,11 @@
 </nav>
 <div class="admin-wrapper">
     <div class="admin-sidebar">
-        <a href="index.jsp"><i class="fa-solid fa-gauge-high"></i> 控制台</a>
-        <a href="users.jsp"><i class="fa-solid fa-users"></i> 用户管理</a>
-        <a href="items.jsp" class="active"><i class="fa-solid fa-clipboard-check"></i> 信息审核</a>
-        <a href="categories.jsp"><i class="fa-solid fa-folder-tree"></i> 分类管理</a>
-        <a href="notices.jsp"><i class="fa-solid fa-bullhorn"></i> 公告管理</a>
+        <a href="index"><i class="fa-solid fa-gauge-high"></i> 控制台</a>
+        <a href="users"><i class="fa-solid fa-users"></i> 用户管理</a>
+        <a href="items" class="active"><i class="fa-solid fa-clipboard-check"></i> 信息审核</a>
+        <a href="categories"><i class="fa-solid fa-folder-tree"></i> 分类管理</a>
+        <a href="notices"><i class="fa-solid fa-bullhorn"></i> 公告管理</a>
     </div>
     <div class="admin-main">
         <h2 style="font-size:20px;font-weight:800;margin-bottom:18px;letter-spacing:-0.02em;">

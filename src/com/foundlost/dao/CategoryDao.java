@@ -91,6 +91,7 @@ public class CategoryDao {
         c.setName(rs.getString("name"));
         c.setSortOrder(rs.getInt("sort_order"));
         c.setStatus(rs.getInt("status"));
+        c.setCreateTime(rs.getTimestamp("create_time"));
         return c;
     }
 }

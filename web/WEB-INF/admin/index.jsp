@@ -23,11 +23,11 @@
 </nav>
 <div class="admin-wrapper">
     <div class="admin-sidebar">
-        <a href="index.jsp" class="active"><i class="fa-solid fa-gauge-high"></i> 控制台</a>
-        <a href="users.jsp"><i class="fa-solid fa-users"></i> 用户管理</a>
-        <a href="items.jsp"><i class="fa-solid fa-clipboard-check"></i> 信息审核</a>
-        <a href="categories.jsp"><i class="fa-solid fa-folder-tree"></i> 分类管理</a>
-        <a href="notices.jsp"><i class="fa-solid fa-bullhorn"></i> 公告管理</a>
+        <a href="index" class="active"><i class="fa-solid fa-gauge-high"></i> 控制台</a>
+        <a href="users"><i class="fa-solid fa-users"></i> 用户管理</a>
+        <a href="items"><i class="fa-solid fa-clipboard-check"></i> 信息审核</a>
+        <a href="categories"><i class="fa-solid fa-folder-tree"></i> 分类管理</a>
+        <a href="notices"><i class="fa-solid fa-bullhorn"></i> 公告管理</a>
     </div>
     <div class="admin-main">
         <h2 style="font-size:22px;font-weight:800;margin-bottom:4px;letter-spacing:-0.02em;">
@@ -43,10 +43,10 @@
         <div class="card">
             <div class="card-header"><i class="fa-solid fa-bolt"></i>&nbsp; 快捷操作</div>
             <div style="display:flex;gap:12px;flex-wrap:wrap;">
-                <a href="users.jsp" class="btn btn-primary"><i class="fa-solid fa-users"></i>&nbsp; 用户管理</a>
-                <a href="items.jsp" class="btn btn-outline"><i class="fa-solid fa-clipboard-check"></i>&nbsp; 审核信息</a>
-                <a href="categories.jsp" class="btn btn-outline"><i class="fa-solid fa-folder-plus"></i>&nbsp; 管理分类</a>
-                <a href="notices.jsp" class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i>&nbsp; 发布公告</a>
+                <a href="users" class="btn btn-primary"><i class="fa-solid fa-users"></i>&nbsp; 用户管理</a>
+                <a href="items" class="btn btn-outline"><i class="fa-solid fa-clipboard-check"></i>&nbsp; 审核信息</a>
+                <a href="categories" class="btn btn-outline"><i class="fa-solid fa-folder-plus"></i>&nbsp; 管理分类</a>
+                <a href="notices" class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i>&nbsp; 发布公告</a>
             </div>
         </div>
     </div>

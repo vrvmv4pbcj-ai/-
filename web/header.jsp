@@ -13,7 +13,7 @@
             <a href="publish.jsp" class="btn-nav"><i class="fa-solid fa-plus"></i> 发布信息</a>
             <a href="item/my"><i class="fa-solid fa-list-check"></i> 我的发布</a>
             <a href="profile.jsp"><i class="fa-solid fa-user-gear"></i> 个人中心</a>
-            <% if (loginUser.getRole() == 1) { %><a href="admin/"><i class="fa-solid fa-gear"></i> 后台管理</a><% } %>
+            <% if (loginUser.getRole() == 1) { %><a href="admin"><i class="fa-solid fa-gear"></i> 后台管理</a><% } %>
             <span class="user-name"><%= loginUser.getRealName() != null && !loginUser.getRealName().isEmpty() ? loginUser.getRealName() : loginUser.getUsername() %></span>
             <a href="logout"><i class="fa-solid fa-right-from-bracket"></i> 退出</a>
         <% } else { %>
