@@ -1,0 +1,19 @@
+﻿# IDE
+.idea/
+*.iml
+out/
+
+# Tomcat runtime (not needed in repo)
+*.log
+*.tmp
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Uploaded files (local only)
+web/upload/*
+!web/upload/.gitkeep
+
+# Compiled classes
+*.class
